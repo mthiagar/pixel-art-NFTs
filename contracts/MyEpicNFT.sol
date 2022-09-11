@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 
 pragma solidity ^0.8.1;
-
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
@@ -20,7 +19,7 @@ contract MyEpicNFT is ERC721URIStorage {
     string[] firstWords = ["0, ", "1, ", "2, ", "3, ", "4, ", "5, ", "6, ", "7, ",  "8, ", "9, "];
     string[] secondWords = ["0 ", "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ",  "8 ", "9 "];
     string[] thirdWords = ["Pixel", "Pixel", "Pixel", "Pixel", "Pixel", "Pixel"];
-
+    event NewEpicNFTMinted(address sender, uint256 tokenId);
     constructor() ERC721 ("SquareNFT", "SQUARE") {
         console.log("This is my NFT contract. Whaaat!");
     }
@@ -90,5 +89,6 @@ contract MyEpicNFT is ERC721URIStorage {
   
     _tokenIds.increment();
     console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
+    emit NewEpicNFTMinted(msg.sender, newItemId);
   }
 }
